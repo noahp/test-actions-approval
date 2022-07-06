@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: "building ref: ${{ github.ref }}"
         run: |
-          if [[ "${{ github.ref }}" == *"refs/tags/"*]] ; then
+          if [[ "${{ github.ref }}" == *"refs/tags/"* ]] ; then
             echo "Building ref ${{ github.ref }}"
           fi
 
