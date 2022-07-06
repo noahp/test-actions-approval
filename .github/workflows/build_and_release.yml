@@ -14,14 +14,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: "building ref: ${{ github.event.push.ref }}"
+      - name: "building ref: ${{ github.ref }}"
         run: |
-          if [[ "${{ github.event.push.ref }}" == *"refs/tags/"*]]; then
-            echo "Building ref ${{ github.event.push.ref }}"
+          if [[ "${{ github.ref }}" == *"refs/tags/"*]] ; then
+            echo "Building ref ${{ github.ref }}"
           fi
 
   deploy:
-    if: startsWith( 'refs/tags/', '${{ github.event.push.ref }}' )
+    if: github.event_name == 'create' && startsWith(github.ref, 'refs/tags/')
     runs-on: "ubuntu-latest"
     environment: "test"
     needs: build
