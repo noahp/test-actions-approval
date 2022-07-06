@@ -32,7 +32,8 @@ jobs:
         run: |
           # strip just the tag name
           TAG_NAME=$(echo ${{ github.ref }} | sed 's|^refs/tags/\(.*\)|\1|')
-          echo RELEASE_NOTES="See [\`CHANGES.md\`](https://github.com/${TAG_NAME}/blob/${TAG_NAME}/CHANGES.md) for release notes." >> $GITHUB_ENV
+          REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}
+          echo RELEASE_NOTES="See [\`CHANGES.md\`](https://github.com/noahp/${REPOSITORY_NAME}/blob/${TAG_NAME}/CHANGES.md) for release notes." >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
