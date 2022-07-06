@@ -23,7 +23,7 @@ jobs:
           fi
 
   deploy:
-    if: github.event_name == 'create' && startsWith('refs/tags/', github.ref)
+    if: (github.event_name == 'create') && (startsWith(github.ref, 'refs/tags/'))
     runs-on: "ubuntu-latest"
     environment: "test"
     needs: build
