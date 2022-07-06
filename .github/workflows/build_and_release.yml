@@ -18,6 +18,8 @@ jobs:
         run: |
           if [[ "${{ github.ref }}" == *"refs/tags/"* ]] ; then
             echo "Building ref ${{ github.ref }}"
+            echo "github.event_name: ${{ github.event_name }}"
+            echo "startswith: {{ startsWith('refs/tags/', github.ref) }}"
           fi
 
   deploy:
