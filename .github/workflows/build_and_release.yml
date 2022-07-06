@@ -24,7 +24,7 @@ jobs:
     if: startsWith( 'refs/tags/', '${{ github.event.push.ref }}' )
     runs-on: "ubuntu-latest"
     environment: "test"
-    needs: build-and-publish
+    needs: build
     steps:
       - name: approval complete ➡️ 🚢
         run: |
