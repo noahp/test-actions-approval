@@ -36,14 +36,7 @@ jobs:
           echo RELEASE_NOTES="See [\`CHANGES.md\`](https://github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY_NAME}/blob/${TAG_NAME}/CHANGES.md) for release notes." >> $GITHUB_ENV
 
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          # release_name: Release ${{ github.ref }}
-          body: |
-            ${{ env.RELEASE_NOTES }}
-          draft: false
-          prerelease: false
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+          GH_DEBUG=api gh release create --repo noahp/memfault-firmware-sdk
+            --target d89584e93dbada7a0ddab29d558c0e9218556837 --notes "${{ env.RELEASE_NOTES }}"
