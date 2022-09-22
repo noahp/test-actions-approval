@@ -38,5 +38,6 @@ jobs:
       - name: Create Release
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
-          GH_DEBUG=api gh release create --repo noahp/memfault-firmware-sdk
-            --target d89584e93dbada7a0ddab29d558c0e9218556837 --notes "${{ env.RELEASE_NOTES }}"
+          GH_DEBUG=api gh release create --repo noahp/memfault-firmware-sdk \
+            --target d89584e93dbada7a0ddab29d558c0e9218556837 --notes "${{ env.RELEASE_NOTES }}" \
+            0.44."$(echo ${{ github.ref }} | sed 's|^refs/tags/\(.*\)|\1|')"
