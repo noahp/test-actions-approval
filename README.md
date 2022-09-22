@@ -12,6 +12,11 @@ Background information:
 1. in the GitHub repo settings, go to Environment and add a new environment. in
    this example, it's named `test`, which is used in the workflow job to require
    approval before running
+
+2. set "required reviewers" for the environment to enable manual approval:
+   
+   ![image](https://user-images.githubusercontent.com/2538614/191828142-9a107cc9-7d22-4fbf-b333-cb986af00522.png)
+
 2. create a simple github actions, in this case the full example is in
    [`.github/workflows/build_and_release.yml`](.github/workflows/build_and_release.yml):
 
